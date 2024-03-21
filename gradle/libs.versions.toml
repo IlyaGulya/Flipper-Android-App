@@ -155,6 +155,9 @@ room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-kapt = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
 
+anvil-utils-annotations="me.gulya.anvil:annotations:0.1.0"
+anvil-utils-compiler="me.gulya.anvil:compiler:0.1.0"
+
 # Dependency Injection - Anvil
 square-anvil-annotations = { module = "com.squareup.anvil:annotations", version.ref = "anvil" }
 square-anvil-compiler-api = { module = "com.squareup.anvil:compiler-api", version.ref = "anvil" }
