@@ -1,7 +1,6 @@
 package com.flipperdevices.widget.screen.deeplink
 
 import android.appwidget.AppWidgetManager
-import android.content.Context
 import android.content.Intent
 import com.flipperdevices.core.di.AppGraph
 import com.flipperdevices.core.log.LogTagProvider
@@ -19,7 +18,7 @@ class WidgetDeeplinkSettingsParserDelegate @Inject constructor() :
     LogTagProvider {
     override val TAG = "WidgetDeeplinkSettingsParserDelegate"
 
-    override fun getPriority(context: Context, intent: Intent): DeepLinkParserDelegatePriority? {
+    override fun getPriority(intent: Intent): DeepLinkParserDelegatePriority? {
         return if (isWidgetOptionsIntent(intent)) {
             DeepLinkParserDelegatePriority.HIGH
         } else {
@@ -27,7 +26,7 @@ class WidgetDeeplinkSettingsParserDelegate @Inject constructor() :
         }
     }
 
-    override suspend fun fromIntent(context: Context, intent: Intent): Deeplink? {
+    override suspend fun fromIntent(intent: Intent): Deeplink? {
         if (!isWidgetOptionsIntent(intent)) return null
         val widgetId = intent.getIntExtra(
             AppWidgetManager.EXTRA_APPWIDGET_ID,
@@ -41,6 +40,6 @@ class WidgetDeeplinkSettingsParserDelegate @Inject constructor() :
 
     private fun isWidgetOptionsIntent(intent: Intent): Boolean {
         return intent.action == AppWidgetManager.ACTION_APPWIDGET_CONFIGURE &&
-            intent.extras?.containsKey(AppWidgetManager.EXTRA_APPWIDGET_ID) == true
+                intent.extras?.containsKey(AppWidgetManager.EXTRA_APPWIDGET_ID) == true
     }
 }

@@ -1,15 +1,17 @@
 plugins {
-    id("flipper.android-lib")
+    id("flipper.multiplatform-lib")
 }
 
 android.namespace = "com.flipperdevices.nfc.attack.api"
 
-dependencies {
-    implementation(projects.components.core.ui.decompose)
+kotlin.sourceSets.commonMain {
+    dependencies {
+        implementation(projects.components.core.ui.decompose)
 
-    implementation(projects.components.deeplink.api)
+        implementation(projects.components.deeplink.api)
 
-    implementation(libs.decompose)
+        implementation(libs.decompose)
 
-    implementation(libs.kotlin.coroutines)
+        implementation(libs.kotlin.coroutines)
+    }
 }

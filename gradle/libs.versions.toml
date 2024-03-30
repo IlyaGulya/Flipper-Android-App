@@ -3,12 +3,12 @@
 kotlin-general = "1.9.22" # https://kotlinlang.org/docs/releases.html#release-details
 kotlin-immutable-collections = "0.3.7" # https://github.com/Kotlin/kotlinx.collections.immutable/releases
 kotlin-datetime = "0.5.0" # https://github.com/Kotlin/kotlinx-datetime/releases
-kotlinx = "1.7.3" # https://github.com/Kotlin/kotlinx.coroutines/releases
+kotlinx-coroutines = "1.8.0" # https://github.com/Kotlin/kotlinx.coroutines/releases
 ksp = "1.9.22-1.0.17" # https://github.com/google/ksp/releases
 anvil = "2.4.9" # https://github.com/square/anvil/releases
 anvil-utils = "0.1.0" # https://github.com/IlyaGulya/anvil-utils/releases
 android-gradle = "8.2.2" # https://developer.android.com/studio/releases/gradle-plugin
-protobuf = "3.25.2" # https://github.com/protocolbuffers/protobuf/releases
+protobuf = "4.26" # https://github.com/protocolbuffers/protobuf/releases
 protobuf-gradle = "0.9.4" # https://github.com/google/protobuf-gradle-plugin/releases
 compose-material = "1.6.0" # https://developer.android.com/jetpack/androidx/releases/compose#versions
 compose-foundation = "1.6.0" # https://developer.android.com/jetpack/androidx/releases/compose#versions
@@ -45,7 +45,7 @@ material = "1.11.0" # https://github.com/material-components/material-components
 splashscreen = "1.1.0-alpha02" # https://developer.android.com/jetpack/androidx/releases/core
 annotations = "1.7.1" # https://developer.android.com/jetpack/androidx/releases/annotation
 appcompat = "1.6.1" # https://developer.android.com/jetpack/androidx/releases/appcompat
-datastore = "1.0.0" # https://developer.android.com/topic/libraries/architecture/datastore
+datastore = "1.1.0-beta02" # https://developer.android.com/topic/libraries/architecture/datastore
 # https://github.com/vsch/flexmark-java/issues/442
 flexmark = "0.42.14"
 markdown = "0.13.0" # https://github.com/Programistich/multiplatform-markdown-renderer
@@ -77,6 +77,8 @@ detekt-ruleset-compose = "0.3.11" # https://github.com/mrmans0n/compose-rules/re
 google-gms-gradle = "4.4.0" # https://developers.google.com/android/guides/google-services-plugin
 google-gms-firebase = "23.4.0" # https://firebase.google.com/docs/android/setup#kotlin:~:text=com.google.firebase%3Afirebase%2Dmessaging
 
+grpcKotlinMultiplatform = "0.4.0"
+
 [libraries]
 # Gradle - Core
 android-gradle = { module = "com.android.tools.build:gradle", version.ref = "android-gradle" }
@@ -91,9 +93,9 @@ kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", versi
 
 grgit-gradle = { module = "com.github.LionZXY:grgit", version.ref = "grgit-gradle" }
 
-kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx" }
-kotlin-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "kotlinx" }
-kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx" }
+kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+kotlin-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "kotlinx-coroutines" }
+kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 
 kotlin-serialization-gradle = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin-general" }
 kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization-json" }
@@ -116,9 +118,14 @@ splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "spla
 compose-activity = { module = "androidx.activity:activity-compose", version.ref = "ktx-activity" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose-ui" }
+compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose-ui" }
 compose-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-ui" }
+compose-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose-ui" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose-foundation" }
 compose-material = { module = "androidx.compose.material:material", version.ref = "compose-material" }
+composeMpp-runtime = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose-multiplatform" }
+composeMpp-tooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "compose-multiplatform" }
+composeMpp-tooling-preview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "compose-multiplatform" }
 
 # UI - Wear
 compose-wear-material = { module = "androidx.wear.compose:compose-material", version.ref = "compose-wear" }
@@ -191,9 +198,11 @@ lifecycle-test = { module = "androidx.lifecycle:lifecycle-runtime-testing", vers
 fastutil = { module = "it.unimi.dsi:fastutil", version.ref = "fastutil" }
 annotations = { module = "androidx.annotation:annotation", version.ref = "annotations" }
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+uriKmp = "com.eygraber:uri-kmp:0.0.18"
 
 # Ktor
 ktor-client = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-logging = { module = "io.ktor:ktor-client-logging-jvm", version.ref = "ktor" }
@@ -260,4 +269,5 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 protobuf = { id = "com.google.protobuf", version.ref = "protobuf-gradle" }
 square-anvil = { id = "com.squareup.anvil", version.ref = "anvil" }
 google-gms = { id = "com.google.gms.google-services", version.ref = "google-gms-gradle" }
+grpcKotlinMultiplatform = { id = "io.github.timortel.kotlin-multiplatform-grpc-plugin", version.ref = "grpcKotlinMultiplatform" }
 

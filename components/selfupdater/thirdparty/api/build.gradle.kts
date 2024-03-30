@@ -10,6 +10,7 @@ dependencies {
     implementation(projects.components.selfupdater.api)
     implementation(projects.components.inappnotification.api)
 
+    implementation(projects.components.core.applicationparams)
     implementation(projects.components.core.log)
     implementation(projects.components.core.ktx)
     implementation(projects.components.core.data)

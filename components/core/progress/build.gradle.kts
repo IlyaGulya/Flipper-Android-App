@@ -1,8 +1,5 @@
 plugins {
-    id("flipper.android-lib")
+    id("flipper.multiplatform-lib")
 }
 
 android.namespace = "com.flipperdevices.core.progress"
-
-dependencies {
-}

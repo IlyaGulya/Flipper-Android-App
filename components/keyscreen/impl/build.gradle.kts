@@ -16,6 +16,7 @@ dependencies {
     implementation(projects.components.infrared.api)
 
     implementation(projects.components.core.ui.theme)
+    implementation(projects.components.core.applicationparams)
     implementation(projects.components.core.di)
     implementation(projects.components.core.log)
     implementation(projects.components.core.ktx)

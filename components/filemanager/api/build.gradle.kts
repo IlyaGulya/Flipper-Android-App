@@ -1,5 +1,5 @@
 plugins {
-    id("flipper.android-compose")
+    id("flipper.multiplatform-lib")
 }
 
 android.namespace = "com.flipperdevices.filemanager.api"

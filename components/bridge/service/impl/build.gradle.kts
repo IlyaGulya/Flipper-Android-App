@@ -13,6 +13,7 @@ android {
 }
 
 dependencies {
+    implementation(projects.components.core.applicationparams)
     implementation(projects.components.core.di)
     implementation(projects.components.core.ktx)
     implementation(projects.components.core.log)

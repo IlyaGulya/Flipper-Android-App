@@ -1,6 +1,5 @@
 package com.flipperdevices.singleactivity.impl
 
-import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -25,6 +24,7 @@ import com.flipperdevices.core.ui.theme.FlipperTheme
 import com.flipperdevices.core.ui.theme.LocalPallet
 import com.flipperdevices.core.ui.theme.viewmodel.ThemeViewModel
 import com.flipperdevices.deeplink.api.DeepLinkParser
+import com.flipperdevices.deeplink.api.fromIntent
 import com.flipperdevices.deeplink.model.Deeplink
 import com.flipperdevices.metric.api.MetricApi
 import com.flipperdevices.metric.api.events.SessionState
@@ -76,7 +76,7 @@ class SingleActivity : AppCompatActivity(), LogTagProvider {
             componentContext = defaultComponentContext(),
             onBack = this::finish,
             initialDeeplink = runBlocking {
-                deeplinkParser.parseOrLog(this@SingleActivity, intent)
+                deeplinkParser.parseOrLog(intent)
             }
         ).also { rootDecomposeComponent = it }
 
@@ -110,7 +110,7 @@ class SingleActivity : AppCompatActivity(), LogTagProvider {
             return
         }
         lifecycleScope.launch(Dispatchers.Default) {
-            deeplinkParser.parseOrLog(this@SingleActivity, intent)?.let {
+            deeplinkParser.parseOrLog(intent)?.let {
                 rootDecomposeComponent?.handleDeeplink(it)
             }
         }
@@ -131,9 +131,9 @@ class SingleActivity : AppCompatActivity(), LogTagProvider {
         metricApi.reportSessionState(SessionState.StopSession)
     }
 
-    private suspend fun DeepLinkParser.parseOrLog(context: Context, intent: Intent): Deeplink? {
+    private suspend fun DeepLinkParser.parseOrLog(intent: Intent): Deeplink? {
         return try {
-            fromIntent(context, intent)
+            fromIntent(intent)
         } catch (throwable: Exception) {
             error(throwable) { "Failed parse deeplink" }
             null

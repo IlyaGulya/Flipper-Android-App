@@ -46,6 +46,7 @@ include(
     ":components:filemanager:api",
     ":components:filemanager:impl",
 
+    ":components:core:applicationparams",
     ":components:core:di",
     ":components:core:ktx",
     ":components:core:log",

@@ -1,10 +1,12 @@
 plugins {
-    id("flipper.android-lib")
+    id("flipper.multiplatform-lib")
 }
 
 android.namespace = "com.flipperdevices.screenstreaming.api"
 
-dependencies {
-    implementation(projects.components.core.ui.decompose)
-    implementation(libs.decompose)
+kotlin.sourceSets.commonMain {
+    dependencies {
+        implementation(projects.components.core.ui.decompose)
+        implementation(libs.decompose)
+    }
 }

@@ -1,17 +1,19 @@
 plugins {
-    id("flipper.android-compose")
+    id("flipper.multiplatform-lib")
 }
 
 android.namespace = "com.flipperdevices.keyparser.api"
 
-dependencies {
-    implementation(projects.components.bridge.dao.api)
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(projects.components.bridge.dao.api)
 
-    implementation(projects.components.core.ui.res)
-    implementation(projects.components.core.ui.theme)
-    implementation(projects.components.core.ktx)
+            implementation(projects.components.core.ktx)
 
-    implementation(libs.kotlin.immutable.collections)
+            implementation(libs.uriKmp)
 
-    implementation(libs.compose.ui)
+            implementation(libs.kotlin.immutable.collections)
+        }
+    }
 }
